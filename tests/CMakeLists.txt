@@ -1,24 +1,8 @@
+cmake_minimum_required(VERSION 3.13)
+project(logfault_test VERSION 0.2 LANGUAGES CXX)
 
-
-macro (ADD_AND_RUN_UNITTEST testname targetname)
-set_property(TARGET ${target} PROPERTY CXX_STANDARD 11)
-SET_CPP_STANDARD(${targetname})
-add_test(NAME ${testname} COMMAND ${targetname})
-if (AUTORUN_UNIT_TESTS)
-    add_custom_command(
-        TARGET ${targetname}
-        POST_BUILD
-        COMMENT "running ${testname}"
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        COMMAND ${CMAKE_CTEST_COMMAND} -C $<CONFIGURATION> -R "${testname}"  --output-on-failure
-    )
-endif()
-endmacro()
-
-
-add_executable(general_tests general_tests.cpp)
-target_link_libraries(general_tests
-    ${DEFAULT_LIBRARIES}
+add_executable(${PROJECT_NAME} general_tests.cpp)
+target_link_libraries(${PROJECT_NAME}
+    logfault
 )
-ADD_AND_RUN_UNITTEST(GENERAL_TESTS general_tests)
-
+add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})

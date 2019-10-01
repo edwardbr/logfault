@@ -7,7 +7,7 @@
 //#define LOGFAULT_TIME_PRINT_MILLISECONDS 0
 //#define LOGFAULT_USE_SYSLOG
 //#define LOGFAULT_USE_WINDOWS_EVENTLOG
-#include "logfault/logfault.h"
+#include "../include/logfault/logfault.h"
 
 using namespace std;
 
