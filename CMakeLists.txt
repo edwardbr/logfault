@@ -48,9 +48,8 @@ install(
 )
 
 install(
-    DIRECTORY ${PROJECT_NAME}
-    DESTINATION "${include_install_dir}"
-    FILES_MATCHING PATTERN "*.h*"
+    FILES "${include_install_dir}/${PROJECT_NAME}/${PROJECT_NAME}.h"
+    DESTINATION "${include_install_dir}/${PROJECT_NAME}"
 )
 
 install(
