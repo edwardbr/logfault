@@ -272,27 +272,30 @@ namespace logfault {
 #endif
 
 #ifdef LOGFAULT_USE_QT_LOG
-    class QtHandler : public Handler {
+    class QtHandler : public Handler
+    {
     public:
         QtHandler(LogLevel level)
-        : Handler(level) {}
+            : Handler(level) {}
 
-        void LogMessage(const logfault::Message& msg) override {
-            switch(msg.level_ {
-                case LogLevel::ERROR:
-                    qFatal() << msg.msg_;
-                    break;
-                case LogLevel::WARN:
-                    qWarning() << msg.msg_;
-                    break;
-                case LogLevel::INFO:
-                case LogLevel::NOTICE:
-                    qInfo() << msg.msg_;
-                    break;
-                case LogLevel::DEBUGGING:
-                case LogLevel::TRACE:
-                    qDebug() << msg.msg_;
-                    break;
+        void LogMessage(const logfault::Message &msg) override
+        {
+            switch (msg.level_)
+            {
+            case LogLevel::ERROR:
+                qCritical() << msg.msg_.c_str();
+                break;
+            case LogLevel::WARN:
+                qWarning() << msg.msg_.c_str();
+                break;
+            case LogLevel::INFO:
+            case LogLevel::NOTICE:
+                qInfo() << msg.msg_.c_str();
+                break;
+            case LogLevel::DEBUGGING:
+            case LogLevel::TRACE:
+                qDebug() << msg.msg_.c_str();
+                break;
             }
         }
     };
