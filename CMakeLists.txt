@@ -6,7 +6,9 @@ message(STATUS "Using ${CMAKE_CXX_COMPILER}")
 
 option(ENABLE_TESTS "Build unit tests" On)
 
- 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON) 
+
 add_library(${PROJECT_NAME} INTERFACE )
 #target_link_libraries(${PROJECT_NAME} PUBLIC Threads::Threads)
 target_include_directories(${PROJECT_NAME} INTERFACE $<INSTALL_INTERFACE:include> )
